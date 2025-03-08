@@ -1,0 +1,13 @@
+[language-server.rust-analyzer]
+config = { completion = { callable = { snippets = "add_parentheses" }, autoimport = { enable = false } } }
+
+[language-server.haskell-language-server]
+config = { haskell = { formattingProvider = "fourmolu", plugin = { fourmolu = { config = { external = true } } } } }
+
+[[language]]
+name = "haskell"
+auto-format = true
+
+[[language]]
+name = "python"
+auto-format = true

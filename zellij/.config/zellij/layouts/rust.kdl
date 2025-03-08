@@ -1,0 +1,21 @@
+layout {
+	pane edit="Cargo.toml"
+
+	floating_panes {
+		pane focus=true {
+			x "5%"
+			y "8%"
+			width "40%"
+			height "80%"
+		}
+
+		pane command="cargo" {
+			start_suspended true
+			args "test" "--workspace" "--all-features"
+			x "45%"
+			y "8%"
+			width "50%"
+			height "80%"
+		}
+	}
+}

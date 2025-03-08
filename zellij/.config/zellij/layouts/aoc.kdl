@@ -1,0 +1,21 @@
+layout {
+	pane edit="stack.yaml"
+
+	floating_panes {
+		pane focus=true {
+			x "5%"
+			y "8%"
+			width "40%"
+			height "80%"
+		}
+
+		pane command="stack" {
+			start_suspended true
+			args "run"
+			x "45%"
+			y "8%"
+			width "50%"
+			height "80%"
+		}
+	}
+}

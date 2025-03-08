@@ -1,0 +1,19 @@
+theme = "hecrj"
+
+[editor]
+line-number = "relative"
+mouse = false
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[keys.normal]
+C-p = "file_picker"
+C-j = ["save_selection", "goto_next_diag"]
+C-k = ["save_selection", "goto_prev_diag"]
+
+[keys.normal.space]
+w = ":w"
+q = ":q"
