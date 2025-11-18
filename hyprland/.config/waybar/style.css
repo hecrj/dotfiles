@@ -6,6 +6,7 @@
     font-weight: 500;
     font-size: 12px;
     padding: 0;
+    margin: 0;
 }
 
 window#waybar {
@@ -62,11 +63,12 @@ tooltip {
 #workspaces button {
     padding: 5px;
     color: #a6adc8;
+    border-bottom: 2px solid transparent;
 }
 
-#workspaces button.active {
+#workspaces > button.active {
     color: #89dceb;
-    border-bottom: 1px solid #89dceb;
+    border-color: #89dceb;
 }
 
 #workspaces button:hover {
@@ -80,10 +82,8 @@ tooltip {
     background-color: #e78a4e;
 }
 
-
 #tray {
-    background-color: #d4be98;
-    border: 2px solid #c7ab7a;
+    background: none;
 }
 
 #cpu.critical,
