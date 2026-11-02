@@ -1,10 +1,17 @@
 [user]
 	email = hector@hecrj.dev
 	name = Héctor Ramón Jiménez
+	signingkey = /home/hector/.ssh/id_ed25519.pub
 [commit]
 	gpgsign = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	allowedSignersFile = /home/hector/.ssh/allowed_signers
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
+[core]
+	excludesFile = /home/hector/.config/git/ignore
