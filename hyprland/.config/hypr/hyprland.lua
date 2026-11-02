@@ -245,6 +245,7 @@ hl.bind(mainMod .. " + SHIFT + V",  hl.dsp.layout("togglesplit")) -- dwindle
 hl.bind(mainMod .. " + R",          hl.dsp.exec_cmd(menu))
 hl.bind(mainMod .. " + P",          hl.dsp.window.pseudo()) -- dwindle
 hl.bind(mainMod .. " + F",          hl.dsp.exec_cmd(browser))
+hl.bind(mainMod .. " + N",          hl.dsp.exec_cmd("fish -c 'ninfer-nightly-toggle'"))
 hl.bind("Print",                    hl.dsp.exec_cmd('grim -g "$(slurp -o)" - | swappy -f -'))
 
 -- Move focus with mainMod + HJKL
