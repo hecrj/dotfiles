@@ -150,14 +150,14 @@ hl.window_rule({
     rounding    = 0,
 })
 
-hl.workspace_rule({ workspace = "1", persistent = true, default = true })
-hl.workspace_rule({ workspace = "2", persistent = true })
-hl.workspace_rule({ workspace = "3", persistent = true })
-hl.workspace_rule({ workspace = "4", persistent = true })
-hl.workspace_rule({ workspace = "5", persistent = true })
-hl.workspace_rule({ workspace = "6", persistent = true })
-hl.workspace_rule({ workspace = "7", persistent = true })
-hl.workspace_rule({ workspace = "8", persistent = true })
+hl.workspace_rule({ workspace = "1", default_name = "www", persistent = true, default = true })
+hl.workspace_rule({ workspace = "2", default_name = "dev1", persistent = true })
+hl.workspace_rule({ workspace = "3", default_name = "dev2", persistent = true })
+hl.workspace_rule({ workspace = "4", default_name = "dev3", persistent = true })
+hl.workspace_rule({ workspace = "5", default_name = "dev4", persistent = true })
+hl.workspace_rule({ workspace = "6", default_name = "media", persistent = true })
+hl.workspace_rule({ workspace = "7", default_name = "chat", persistent = true })
+hl.workspace_rule({ workspace = "8", default_name = "other", persistent = true })
 
 -- iced
 hl.window_rule({ match = { title = ".*(i|I)ced.*" }, float = true, move = "20 20" })
