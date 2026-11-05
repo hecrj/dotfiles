@@ -86,6 +86,8 @@ hl.config({
         active_opacity   = 1.0,
         inactive_opacity = 1.0,
 
+        dim_special = 0.5,
+
         shadow = {
             enabled      = true,
             range        = 4,
@@ -153,6 +155,9 @@ hl.workspace_rule({ workspace = "2", persistent = true })
 hl.workspace_rule({ workspace = "3", persistent = true })
 hl.workspace_rule({ workspace = "4", persistent = true })
 hl.workspace_rule({ workspace = "5", persistent = true })
+hl.workspace_rule({ workspace = "6", persistent = true })
+hl.workspace_rule({ workspace = "7", persistent = true })
+hl.workspace_rule({ workspace = "8", persistent = true })
 
 -- iced
 hl.window_rule({ match = { title = ".*(i|I)ced.*" }, float = true, move = "20 20" })
@@ -167,6 +172,11 @@ hl.window_rule({ match = { title = "^Icebreaker$" }, float = true })
 
 -- File pickers
 hl.window_rule({ match = { class = "^xdg-desktop-portal-gtk$" }, float = true })
+
+-- nanosuit
+hl.window_rule({ match = { title = ".*nanosuit.*" }, workspace = "special:magic" })
+hl.window_rule({ match = { title = ".*nanosuit.*" }, float = true })
+hl.window_rule({ match = { title = ".*nanosuit.*" }, center = true })
 
 -- See https://wiki.hypr.land/configuring/layouts/dwindle-layout/ for more
 hl.config({
@@ -219,8 +229,10 @@ hl.config({
     },
 })
 
--- Old: gestures:workspace = false — disable the default 3-finger horizontal workspace swipe
--- hl.gesture({ fingers = 3, direction = "horizontal", action = "unset" })
+-- Old: gestures:workspace = false — disable the default 3-finger horizontal workspace swipe.
+-- In 0.57 gestures only exist if declared in the config, so simply not adding
+-- hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" }) is the port.
+-- (Unsetting a gesture that was never added fails with "Can't remove a non-existent gesture".)
 
 -- Example per-device config
 -- See https://wiki.hypr.land/configuring/core/devices/ for more
@@ -243,7 +255,6 @@ hl.bind(mainMod .. " + E",          hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V",          hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + SHIFT + V",  hl.dsp.layout("togglesplit")) -- dwindle
 hl.bind(mainMod .. " + R",          hl.dsp.exec_cmd(menu))
-hl.bind(mainMod .. " + P",          hl.dsp.window.pseudo()) -- dwindle
 hl.bind(mainMod .. " + F",          hl.dsp.exec_cmd(browser))
 hl.bind(mainMod .. " + N",          hl.dsp.exec_cmd("fish -c 'ninfer-nightly-toggle'"))
 hl.bind("Print",                    hl.dsp.exec_cmd('grim -g "$(slurp -o)" - | swappy -f -'))
@@ -253,6 +264,12 @@ hl.bind(mainMod .. " + H",          hl.dsp.focus({ direction = "left" }))
 hl.bind(mainMod .. " + J",          hl.dsp.focus({ direction = "down" }))
 hl.bind(mainMod .. " + K",          hl.dsp.focus({ direction = "up" }))
 hl.bind(mainMod .. " + L",          hl.dsp.focus({ direction = "right" }))
+
+-- Snap a freed (floating / pseudotiled) window to a screen edge; vi motions
+hl.bind(mainMod .. " + SHIFT + H", hl.dsp.window.move({ direction = "left" }))
+hl.bind(mainMod .. " + SHIFT + J", hl.dsp.window.move({ direction = "down" }))
+hl.bind(mainMod .. " + SHIFT + K", hl.dsp.window.move({ direction = "up" }))
+hl.bind(mainMod .. " + SHIFT + L", hl.dsp.window.move({ direction = "right" }))
 
 -- Switch workspaces with mainMod + [0-9] / move window with mainMod + SHIFT + [0-9]
 -- (10 maps to key 0, same as before)
