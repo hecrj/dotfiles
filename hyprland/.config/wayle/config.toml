@@ -1,1 +1,22 @@
 # Wayle configuration file
+
+# VRAM usage widget (NVIDIA), shown in the bar as "custom-vram".
+# Polls nvidia-smi every 5s; label shows used GiB, tooltip shows MiB + %.
+[[modules.custom]]
+id = "vram"
+interval-ms = 5000
+hide-if-empty = true
+command = '''
+nvidia-smi --query-gpu=memory.used,memory.total --format=csv,noheader,nounits \
+  | head -n1 \
+  | awk -F', *' '{
+      u = $1 + 0; t = $2 + 0
+      p = (t > 0) ? int(u * 100 / t) : 0
+      printf "{\"used\": %d, \"total\": %d, \"used_gb\": %.1f, \"total_gb\": %.1f, \"percentage\": %d}\n", u, t, u / 1024, t / 1024, p
+    }'
+'''
+format = "{{ used_gb }}G"
+tooltip-format = "VRAM: {{ used }} / {{ total }} MiB ({{ percentage }}%)"
+# ld-gpu-symbolic comes from the lucide CDN source: `wayle icons install lucide gpu`
+# (or `wayle icons sync` on machines where it's missing)
+icon-name = "ld-gpu-symbolic"

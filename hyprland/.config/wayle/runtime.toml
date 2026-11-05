@@ -23,6 +23,7 @@ center = ["window-title"]
 right = [
     "cpu",
     "ram",
+    "custom-vram",
     "storage",
     "netstat",
     "volume",
